@@ -6,16 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var TxtComponent = (function () {
-    function TxtComponent() {
+var SceneComponent = (function () {
+    function SceneComponent() {
     }
-    return TxtComponent;
+    return SceneComponent;
 }());
-TxtComponent = __decorate([
+SceneComponent = __decorate([
     core_1.Component({
-        selector: 'txt-screen',
-        templateUrl: './txt.template.html'
+        selector: 'scene-page',
+        templateUrl: './scene.template.html'
     })
-], TxtComponent);
-exports.TxtComponent = TxtComponent;
-//# sourceMappingURL=txt.component.js.map
+], SceneComponent);
+exports.SceneComponent = SceneComponent;
+//# sourceMappingURL=scene.component.js.map

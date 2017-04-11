@@ -10,6 +10,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var app_component_1 = require("./app.component");
 var email_component_1 = require("./email/email.component");
+var scene_component_1 = require("./scene/scene.component");
 var app_routing_1 = require("./app.routing");
 var AppModule = (function () {
     function AppModule() {
@@ -19,7 +20,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, ng_bootstrap_1.NgbModule.forRoot(), app_routing_1.appRouting],
-        declarations: [app_component_1.AppComponent, email_component_1.EmailComponent],
+        declarations: [app_component_1.AppComponent, email_component_1.EmailComponent, scene_component_1.SceneComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
