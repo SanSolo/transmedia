@@ -15,7 +15,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1><p>\n  <ngb-alert [dismissible]=\"false\">\n    <strong>Warning!</strong> Better check yourself, you're not looking too good.\n  </ngb-alert>\n</p><main><router-outlet></router-outlet></main>",
+        template: "<main><router-outlet></router-outlet></main>",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
