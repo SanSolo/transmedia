@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'txt-screen',
   templateUrl: './txt.template.html'
 })
-export class TxtComponent  { username = 'Jonas'; }
+export class TxtComponent  {}
