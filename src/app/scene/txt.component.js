@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var TxtComponent = (function () {
     function TxtComponent() {
-        this.name = 'coucou';
+        this.username = 'Jonas';
     }
     return TxtComponent;
 }());
 TxtComponent = __decorate([
     core_1.Component({
         selector: 'txt-screen',
-        template: "<p>Coucou<p>",
+        templateUrl: './txt.template.html'
     })
 ], TxtComponent);
 exports.TxtComponent = TxtComponent;

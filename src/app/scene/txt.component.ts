@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'txt-screen',
-  template: `<p>Coucou<p>`,
+  templateUrl: './txt.template.html'
 })
-export class TxtComponent  { name = 'coucou'; }
+export class TxtComponent  { username = 'Jonas'; }
