@@ -6,17 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.name = 'txt-p';
+var TxtComponent = (function () {
+    function TxtComponent() {
+        this.name = 'coucou';
     }
-    return AppComponent;
+    return TxtComponent;
 }());
-AppComponent = __decorate([
+TxtComponent = __decorate([
     core_1.Component({
         selector: 'txt-screen',
-        template: "<p>{txt-p}<p>",
+        template: "<p>Coucou<p>",
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
+], TxtComponent);
+exports.TxtComponent = TxtComponent;
 //# sourceMappingURL=txt.component.js.map

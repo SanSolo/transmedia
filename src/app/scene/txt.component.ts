@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'txt-screen',
-  template: `<p>{txt-p}<p>`,
+  template: `<p>Coucou<p>`,
 })
-export class AppComponent  { name = 'txt-p'; }
+export class TxtComponent  { name = 'coucou'; }
