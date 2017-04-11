@@ -14,7 +14,7 @@ var EmailComponent = (function () {
 EmailComponent = __decorate([
     core_1.Component({
         selector: 'email-page',
-        template: 'Email page'
+        templateUrl: './email.template.html'
     })
 ], EmailComponent);
 exports.EmailComponent = EmailComponent;

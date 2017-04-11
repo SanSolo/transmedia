@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
+        this.name = 'txt-p';
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1><p>\n  <ngb-alert [dismissible]=\"false\">\n    <strong>Warning!</strong> Better check yourself, you're not looking too good.\n  </ngb-alert>\n</p><main><router-outlet></router-outlet></main>",
+        selector: 'txt-screen',
+        template: "<p>{txt-p}<p>",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=txt.component.js.map

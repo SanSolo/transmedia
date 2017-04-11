@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component ({
   selector:'email-page',
-  template: 'Email page'
+  templateUrl: './email.template.html'
 })
 
 export class EmailComponent {}
