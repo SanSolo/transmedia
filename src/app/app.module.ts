@@ -4,12 +4,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent }  from './app.component';
 import { EmailComponent } from './email/email.component';
 import { SceneComponent } from './scene/scene.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appRouting } from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting, FormsModule ],
+  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting, FormsModule, ReactiveFormsModule],
   declarations: [ AppComponent, EmailComponent, SceneComponent ],
   bootstrap:    [ AppComponent ]
 })
