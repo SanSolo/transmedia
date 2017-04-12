@@ -57,3 +57,111 @@ border-radius: 0 20px 20px 0;
 background: #243c4f;
 color: #fff;
 }
+.carousel,
+.item,
+.active {
+height: 460px; }
+
+.carousel-inner {
+height: 100%; }
+
+.fill {
+width: 100%;
+height: 100%;
+}
+
+.carousel-fade .carousel-inner .item {
+-webkit-transition-property: opacity;
+transition-property: opacity; }
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+opacity: 0; }
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+opacity: 1; }
+
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+left: 0;
+-webkit-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0); }
+
+.carousel-fade .carousel-control {
+z-index: 2; }
+
+.carousel-indicators {
+left: 20px;
+text-align: left;
+margin-left: 0; }
+
+.carousel-indicators li {
+width: 20px;
+background: rgba(0, 0, 0, 0.2); }
+
+.carousel-indicators .active {
+width: 20px;
+height: 11px;
+background: #243c4f;
+border-color: #243c4f; }
+
+.carousel-caption {
+text-align: left; }
+.carousel-caption .content {
+padding: 40px; }
+.carousel-caption .content h2 {
+font-size: 50px; }
+.carousel-caption .content p {
+font-size: 20px;
+line-height: 32px;
+text-shadow:none;
+font-weight: 100; }
+.carousel-caption .content .btn-slider {
+border: 1px solid rgba(255, 255, 255, 0.3);
+color: #fff;
+text-transform: uppercase;
+border-radius: 0;
+margin-top: 30px;
+padding: 10px 12px;
+transition: all 0.4s ease-in-out; }
+.carousel-caption .content .btn-slider:hover {
+background: rgba(0, 0, 0, 0.1); }
+@media (min-width: 768px) {
+.carousel-caption {
+top: 0;
+right: 0;
+bottom: 0;
+left: 50%;
+background: #243c4f; }
+
+.carousel-caption .content {
+position: relative; }
+.carousel-caption .content:before {
+position: absolute;
+content: '';
+border-right: 20px solid #243c4f;
+border-top: 20px solid transparent;
+border-bottom: 20px solid transparent;
+z-index: 999999;
+left: -20px; } }
+@media (max-width: 991px) {
+.carousel-caption .content h2 {
+font-size: 36px;
+margin: 0;
+padding: 0; }
+
+.carousel-caption .content p {
+font-size: 16px;
+line-height: 26px; } }
+@media (max-width: 767px) {
+.menu-section .nav-tabs > li > a small {
+display: none; }
+
+.carousel-caption {
+display: none; }
+}
