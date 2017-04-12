@@ -31,7 +31,9 @@ main {
 .home-newsletter {
 padding: 80px 0;
 }
-
+.btn {
+  cursor: pointer;
+}
 .home-newsletter .single {
 max-width: 650px;
 margin: 0 auto;
@@ -56,6 +58,9 @@ min-height: 50px;
 border-radius: 0 20px 20px 0;
 background: #243c4f;
 color: #fff;
+}
+.btn-theme:active {
+  border-color: white;
 }
 .carousel,
 .item,

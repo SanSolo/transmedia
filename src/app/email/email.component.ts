@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './email.template.html'
 })
 
-export class EmailComponent {}
+export class EmailComponent {
+
+}

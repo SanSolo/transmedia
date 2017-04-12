@@ -4,11 +4,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent }  from './app.component';
 import { EmailComponent } from './email/email.component';
 import { SceneComponent } from './scene/scene.component';
+import { FormsModule } from '@angular/forms';
 
 import { appRouting } from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting ],
+  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting, FormsModule ],
   declarations: [ AppComponent, EmailComponent, SceneComponent ],
   bootstrap:    [ AppComponent ]
 })
