@@ -5,11 +5,12 @@ import { AppComponent }  from './app.component';
 import { EmailComponent } from './email/email.component';
 import { SceneComponent } from './scene/scene.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { appRouting } from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting, FormsModule, ReactiveFormsModule],
+  imports:      [ BrowserModule , NgbModule.forRoot(), appRouting, FormsModule, ReactiveFormsModule, HttpModule, JsonpModule],
   declarations: [ AppComponent, EmailComponent, SceneComponent ],
   bootstrap:    [ AppComponent ]
 })
