@@ -12,6 +12,10 @@ var Scene = (function () {
     return Scene;
 }());
 exports.Scene = Scene;
+var SCENES = [
+    { id: 1, sceneTitle: 'Première scène', scenePlotText: 'Petit texte pour mettre bien', scenePlotImgUrl: './img/scene1.jpg' },
+    { id: 2, sceneTitle: 'Première scène', scenePlotText: 'Petit texte pour mettre bien', scenePlotImgUrl: './img/scene2.jpg' }
+];
 var SceneComponent = (function () {
     function SceneComponent() {
         this.scene = {
