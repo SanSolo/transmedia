@@ -45,15 +45,20 @@ font-size: 22px;
 color: #243c4f;
 text-transform: uppercase;
 margin-bottom: 40px; }
-.home-newsletter .single .form-control {
+.form-control {
 height: 50px;
 background: rgba(255, 255, 255, 0.6);
 border-color: transparent;
 border-radius: 20px 0px 0px 20px; }
-
-.home-newsletter .single .form-control:focus {
-box-shadow: none;
-border-color: #243c4f; }
+.has-danger .form-control-danger {
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 20px;
+}
+.form-control-feedback {
+  text-align: left;
+  color:#f32822!important;
+}
 .home-newsletter .single .btn {
 min-height: 50px;
 border-radius: 0 20px 20px 0;
@@ -219,4 +224,3 @@ display: inline-block;; }};
   padding: 2% 10%;
   background-color: white;
 }
-

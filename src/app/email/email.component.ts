@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator } from './validator';
 
 @Component ({
   selector:'email-page',
@@ -7,12 +8,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 export class EmailComponent {
+  emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
   complexForm: FormGroup;
   constructor(fb: FormBuilder){
     this.complexForm = fb.group({
-      'email':'',
-      'nom':'',
-      'prenom':''
+      'email': ['', Validators.compose([Validators.required, Validators.pattern(this.emailRegex)])],
+      'nom': [null, Validators.compose([Validators.required,Validators.minLength(3)])],
+      'prenom': [null, Validators.compose([Validators.required,Validators.minLength(3)])]
     })
   }
   submitForm(value: any):void{

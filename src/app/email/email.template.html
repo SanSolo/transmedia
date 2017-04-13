@@ -9,26 +9,27 @@
 <div class="col-sm-12">
 	<div class="single">
 		<h2>Renseignez votre email pour pouvoir jouer</h2>
-    <form action="//heig-vd.us15.list-manage.com/subscribe/post?u=1bf93c79d874dd94bb5188e7b&amp;id=eb7b58de02" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div class="input-group">
+    <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+      <div class="form-group" [ngClass]="{'has-danger':!complexForm.controls['nom'].valid && complexForm.controls['nom'].touched}">
+        <input class="form-control" [ngClass]="{'form-control-danger':!complexForm.controls['nom'].valid && complexForm.controls['nom'].touched}" type="text" placeholder="Nom" [formControl]="complexForm.controls['nom']" required>
+        <div *ngIf="complexForm.controls['nom'].hasError('required') && complexForm.controls['nom'].touched" class="form-control-feedback">Le nom est obligatoire</div>
+        <div *ngIf="complexForm.controls['nom'].hasError('minlength') && complexForm.controls['nom'].touched" class="form-control-feedback">Le nom doit comporter 3 car. min.</div>
+      </div>
 
-             <input type="text" class="form-control" id="mce-LNAME" name="LNAME" placeholder="Nom" [formControl]="complexForm.controls['nom']" required>
-
-              </div>
-              <div class="input-group mt-3">
-
-                     <input type="text" class="form-control" placeholder="Prénom" [formControl]="complexForm.controls['prenom']" required>
-
-                      </div>
-	<div class="input-group mt-3">
-
-         <input type="email" class="form-control" placeholder="Entrez votre email" [formControl]="complexForm.controls['email']" required>
+      <div class="form-group mt-3" [ngClass]="{'has-danger':!complexForm.controls['prenom'].valid && complexForm.controls['prenom'].touched}">
+        <input type="text" class="form-control" [ngClass]="{'form-control-danger':!complexForm.controls['prenom'].valid && complexForm.controls['prenom'].touched}" placeholder="Prénom" [formControl]="complexForm.controls['prenom']" required>
+        <div *ngIf="complexForm.controls['prenom'].hasError('required') && complexForm.controls['prenom'].touched" class="form-control-feedback">Le prénom est obligatoire</div>
+        <div *ngIf="complexForm.controls['prenom'].hasError('minlength') && complexForm.controls['prenom'].touched" class="form-control-feedback">Le prénom doit comporter 3 car. min.</div>
+      </div>
+	     <div class="input-group form-group mt-3" [ngClass]="{'has-danger':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+         <input type="email" class="form-control" [ngClass]="{'form-control-danger':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}" placeholder="Entrez votre email" [formControl]="complexForm.controls['email']" required>
          <span class="input-group-btn">
-         <button class="btn btn-theme" type="submit">Jouer</button>
+         <button class="btn btn-theme" [disabled]="!complexForm.valid" type="submit">Jouer</button>
          </span>
-            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1bf93c79d874dd94bb5188e7b_eb7b58de02" tabindex="-1" value=""></div>
-          </div>
-        </form>
+       </div>
+       <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="form-control-feedback">L'email est obligatoire</div>
+       <div *ngIf="complexForm.controls['email'].hasError('pattern') && complexForm.controls['email'].touched" class="form-control-feedback">L'email est invalide. Ex: mail@exemple.com</div>
+      </form>
 	</div>
 </div>
 </div>

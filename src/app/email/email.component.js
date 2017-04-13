@@ -12,10 +12,11 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var EmailComponent = (function () {
     function EmailComponent(fb) {
+        this.emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
         this.complexForm = fb.group({
-            'email': '',
-            'nom': '',
-            'prenom': ''
+            'email': ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern(this.emailRegex)])],
+            'nom': [null, forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(3)])],
+            'prenom': [null, forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(3)])]
         });
     }
     EmailComponent.prototype.submitForm = function (value) {
