@@ -4,6 +4,11 @@
 	<div class="scene-plot">
 		<h1>{{scene.sceneTitle}}</h1>
 		<p>{{scene.scenePlotText}}</p>
+		<ul>
+			<li *ngFor="let scene of scenes">
+				{{ scene.content.rendered }}
+			</li>
+		</ul>
 		<form action="">
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
