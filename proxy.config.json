@@ -1,0 +1,7 @@
+{
+	"/wp-json/*":{
+		"target":"http://daro.kietumedia.ch",
+		"secure":false,
+		"logLevel":"debug"
+	}
+}

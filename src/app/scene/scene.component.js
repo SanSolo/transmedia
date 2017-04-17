@@ -10,20 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var scene_service_1 = require("./scene.service");
-var SCENES = [
-    { id: 1, sceneTitle: 'Première scène', scenePlotText: 'Petit texte pour mettre bien', scenePlotImgUrl: './img/scene1.jpg' },
-    { id: 2, sceneTitle: 'Première scène', scenePlotText: 'Petit texte pour mettre bien', scenePlotImgUrl: './img/scene2.jpg' }
-];
 var SceneComponent = (function () {
     function SceneComponent(sceneService) {
         this.sceneService = sceneService;
         this.mode = 'Observable';
+        this.sceneId = '1';
     }
-    SceneComponent.prototype.ngOnInit = function () { this.getScenes(); };
+    SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
     SceneComponent.prototype.getScenes = function () {
         var _this = this;
         this.sceneService.getScenes()
             .subscribe(function (scenes) { return _this.scenes = scenes; }, function (error) { return _this.errorMessage = error; });
+    };
+    SceneComponent.prototype.getScenesById = function (sceneId) {
+        var _this = this;
+        this.sceneService.getScenesById(sceneId)
+            .subscribe(function (scene) { return _this.scene = scene; }, function (error) { return _this.errorMessage = error; });
     };
     return SceneComponent;
 }());

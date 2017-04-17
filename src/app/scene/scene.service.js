@@ -23,6 +23,12 @@ var SceneService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    SceneService.prototype.getScenesById = function (sceneId) {
+        this.scenesUrl += '/' + sceneId;
+        return this.http.get(this.scenesUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     SceneService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};
@@ -48,4 +54,7 @@ SceneService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], SceneService);
 exports.SceneService = SceneService;
+/*
+  private heroesUrl = 'app/heroes.json'; // URL to JSON file
+*/
 //# sourceMappingURL=scene.service.js.map
