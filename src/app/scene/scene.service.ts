@@ -18,7 +18,7 @@ export class SceneService {
   }
   
   getScenesById(sceneId: string): Observable<Scene>{
-    this.scenesUrl += '/' + sceneId;
+    this.scenesUrl += '/' + sceneId + '?_embed';
     return this.http.get(this.scenesUrl)
                     .map(this.extractData)
                     .catch(this.handleError);              

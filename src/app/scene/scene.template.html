@@ -1,8 +1,8 @@
-<!--<div class="scene-img" [ngStyle]="{'background-image':'url(' + scene.scenePlotImgUrl + ')'}"></div>-->
+<div class="scene-img" *ngIf="scene" [ngStyle]="{'background-image':'url(' + scene._embedded['wp:featuredmedia']['0']['source_url'] +')'}"></div>
 <div class="scene-txt"></div>
 <div class="scene-plot-container">
-	<div class="scene-plot">
-		
+	<div class="scene-plot" *ngIf="scene"><!--scene._embedded.wp:featuredmedia.0.source-->
+		<p>{{scene.content.rendered}}</p>
 		<form action="">
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
