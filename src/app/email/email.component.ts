@@ -13,6 +13,8 @@ import {Observable} from 'rxjs/Rx';
 export class EmailComponent {
   emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
   complexForm: FormGroup;
+  private errorMessage ='';
+  private results: Email[];
   model = new Email('','','');
   constructor(fb: FormBuilder, private myService:EmailService){
     this.complexForm = fb.group({
@@ -26,8 +28,17 @@ export class EmailComponent {
     this.model.nom = value.nom;
     this.model.prenom = value.prenom;
     this.model.email = value.email;
-    this.myService.addComment(this.model);
+    this.addEmail(this.model);
+    //console.log(this.myService.addComment(this.model));
     console.log('Reactive Form Data: ');
     console.log(value);
   }
+
+  addEmail(body: Object) {
+   if (!body) { return; }
+   this.myService.addComment(body)
+                    .subscribe(
+                      test  => this.results = test,
+                      error =>  this.errorMessage = <any>error);
+ }
 }

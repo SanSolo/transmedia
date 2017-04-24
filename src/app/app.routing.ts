@@ -7,6 +7,7 @@ const appRoutes: Routes = [
   {path: '', component: AppComponent},
   { path: 'mail', component: EmailComponent},
   { path: 'scene', component: SceneComponent},
+  {path: 'mailchimp', redirectTo: ''}
 ];
 
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);

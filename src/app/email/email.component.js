@@ -16,6 +16,7 @@ var EmailComponent = (function () {
     function EmailComponent(fb, myService) {
         this.myService = myService;
         this.emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
+        this.errorMessage = '';
         this.model = new email_1.Email('', '', '');
         this.complexForm = fb.group({
             'email': ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern(this.emailRegex)])],
@@ -28,9 +29,18 @@ var EmailComponent = (function () {
         this.model.nom = value.nom;
         this.model.prenom = value.prenom;
         this.model.email = value.email;
-        this.myService.addComment(this.model);
+        this.addEmail(this.model);
+        //console.log(this.myService.addComment(this.model));
         console.log('Reactive Form Data: ');
         console.log(value);
+    };
+    EmailComponent.prototype.addEmail = function (body) {
+        var _this = this;
+        if (!body) {
+            return;
+        }
+        this.myService.addComment(body)
+            .subscribe(function (test) { return _this.results = test; }, function (error) { return _this.errorMessage = error; });
     };
     return EmailComponent;
 }());

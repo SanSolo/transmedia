@@ -21,6 +21,8 @@ var EmailService = (function () {
         this.http = http;
         // private instance variable to hold base url
         this.emailsUrl = 'https://us15.api.mailchimp.com/3.0/lists/eb7b58de02/members';
+        this.apiKey = '061820fb1a77e6b6e3efbbd6e815c3ff-us15';
+        this.apiUser = 'Comem';
     }
     // Fetch all existing comments
     EmailService.prototype.getComments = function () {
@@ -29,14 +31,42 @@ var EmailService = (function () {
             .map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); });
     };
+    EmailService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
+    EmailService.prototype.handleError = function (error) {
+        // In a real world app, you might use a remote logging infrastructure
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Rx_1.Observable.throw(errMsg);
+    };
     EmailService.prototype.addComment = function (body) {
         var bodyString = JSON.stringify(body); // Stringify payload
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        console.log(bodyString);
+        var data = {
+            "email_address": body,
+            "status": "subscribed",
+            "merge_fields": {
+                "FNAME": body,
+                "LNAME": body
+            }
+        };
+        var headers = new http_1.Headers(); // ... Set content type to JSON
+        headers.append("Authorization", "Basic " + btoa('prout' + ":" + this.apiKey));
+        headers.append("Content-Type", "application/json");
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
-        console.log('coucou');
-        return this.http.post(this.emailsUrl, body, options) // ...using post request
-            .map(function (res) { return res.json(); }) // ...and calling .json() on the response to return data
-            .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); }); //...errors if any
+        return this.http.post(this.emailsUrl, data, options)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
     return EmailService;
 }());
