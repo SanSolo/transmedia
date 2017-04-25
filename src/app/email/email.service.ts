@@ -3,20 +3,23 @@ import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Email }           from './model/email';
 import {Observable} from 'rxjs/Rx';
+import '../../constants.js';
 
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+declare var mailChimpKey: any;
+declare var mailChimpUser: any;
 @Injectable()
 export class EmailService {
      // Resolve HTTP using the constructor
      constructor (private http: Http) {}
      // private instance variable to hold base url
      private emailsUrl = 'https://us15.api.mailchimp.com/3.0/lists/eb7b58de02/members';
-     private apiKey = '061820fb1a77e6b6e3efbbd6e815c3ff-us15';
-     private apiUser = 'Comem';
+     private apiKey = mailChimpKey;
+     private apiUser = mailChimpUser;
 
 
      // Fetch all existing comments
@@ -48,22 +51,22 @@ private handleError (error: Response | any) {
   return Observable.throw(errMsg);
 }
 
-     addComment(body: Object): Observable<Email[]> {
-       let bodyString = JSON.stringify(body); // Stringify payload
-       console.log(bodyString);
+     registerEmail(adresse: string, nom: string, prenom: string): Observable<Email[]> {
+       //let bodyString = JSON.stringify(body); // Stringify payload
+       //console.log(bodyString);
        let data = {
-         "email_address": body,
+         "email_address": adresse,
          "status": "subscribed",
          "merge_fields": {
-           "FNAME": body,
-           "LNAME": body
+           "FNAME": prenom,
+           "LNAME": nom
          }
        }
        let headers      = new Headers(); // ... Set content type to JSON
        headers.append("Authorization", "Basic " + btoa('prout' + ":" + this.apiKey));
        headers.append("Content-Type", "application/json");
        let options       = new RequestOptions({ headers: headers }); // Create a request option
-       return this.http.post(this.emailsUrl, data, options)
+       return this.http.post('/mailchimp', data, options)
                     .map(this.extractData)
                     .catch(this.handleError);
    }

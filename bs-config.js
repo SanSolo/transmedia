@@ -4,6 +4,7 @@ var fallbackMiddleware = require('connect-history-api-fallback');
 var apiProxy = proxy('/mailchimp', {
     target: 'https://us15.api.mailchimp.com/3.0/lists/eb7b58de02/members',
     changeOrigin: true,  // for vhosted sites
+    pathRewrite: {"^/mailchimp": ""}
 });
 
 module.exports = {

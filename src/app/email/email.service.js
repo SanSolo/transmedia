@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Rx_1 = require("rxjs/Rx");
+require("../../constants.js");
 // Import RxJs required methods
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
@@ -21,8 +22,8 @@ var EmailService = (function () {
         this.http = http;
         // private instance variable to hold base url
         this.emailsUrl = 'https://us15.api.mailchimp.com/3.0/lists/eb7b58de02/members';
-        this.apiKey = '061820fb1a77e6b6e3efbbd6e815c3ff-us15';
-        this.apiUser = 'Comem';
+        this.apiKey = mailChimpKey;
+        this.apiUser = mailChimpUser;
     }
     // Fetch all existing comments
     EmailService.prototype.getComments = function () {
@@ -49,22 +50,22 @@ var EmailService = (function () {
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    EmailService.prototype.addComment = function (body) {
-        var bodyString = JSON.stringify(body); // Stringify payload
-        console.log(bodyString);
+    EmailService.prototype.registerEmail = function (adresse, nom, prenom) {
+        //let bodyString = JSON.stringify(body); // Stringify payload
+        //console.log(bodyString);
         var data = {
-            "email_address": body,
+            "email_address": adresse,
             "status": "subscribed",
             "merge_fields": {
-                "FNAME": body,
-                "LNAME": body
+                "FNAME": prenom,
+                "LNAME": nom
             }
         };
         var headers = new http_1.Headers(); // ... Set content type to JSON
         headers.append("Authorization", "Basic " + btoa('prout' + ":" + this.apiKey));
         headers.append("Content-Type", "application/json");
         var options = new http_1.RequestOptions({ headers: headers }); // Create a request option
-        return this.http.post(this.emailsUrl, data, options)
+        return this.http.post('/mailchimp', data, options)
             .map(this.extractData)
             .catch(this.handleError);
     };

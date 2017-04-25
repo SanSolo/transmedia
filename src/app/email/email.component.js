@@ -29,17 +29,23 @@ var EmailComponent = (function () {
         this.model.nom = value.nom;
         this.model.prenom = value.prenom;
         this.model.email = value.email;
-        this.addEmail(this.model);
+        this.addEmail(this.model.email, this.model.prenom, this.model.nom);
         //console.log(this.myService.addComment(this.model));
         console.log('Reactive Form Data: ');
         console.log(value);
     };
-    EmailComponent.prototype.addEmail = function (body) {
+    EmailComponent.prototype.addEmail = function (adresse, prenom, nom) {
         var _this = this;
-        if (!body) {
+        if (!adresse) {
             return;
         }
-        this.myService.addComment(body)
+        if (!nom) {
+            return;
+        }
+        if (!prenom) {
+            return;
+        }
+        this.myService.registerEmail(adresse, prenom, nom)
             .subscribe(function (test) { return _this.results = test; }, function (error) { return _this.errorMessage = error; });
     };
     return EmailComponent;

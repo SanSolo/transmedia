@@ -28,15 +28,17 @@ export class EmailComponent {
     this.model.nom = value.nom;
     this.model.prenom = value.prenom;
     this.model.email = value.email;
-    this.addEmail(this.model);
+    this.addEmail(this.model.email, this.model.prenom, this.model.nom);
     //console.log(this.myService.addComment(this.model));
     console.log('Reactive Form Data: ');
     console.log(value);
   }
 
-  addEmail(body: Object) {
-   if (!body) { return; }
-   this.myService.addComment(body)
+  addEmail(adresse: string, prenom: string, nom: string) {
+   if (!adresse) { return; }
+   if (!nom) { return; }
+   if (!prenom) { return; }
+   this.myService.registerEmail(adresse, prenom, nom)
                     .subscribe(
                       test  => this.results = test,
                       error =>  this.errorMessage = <any>error);
