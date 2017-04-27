@@ -35,7 +35,6 @@ var SceneComponent = SceneComponent_1 = (function () {
         var _this = this;
         this.sceneService.getScenesById(sceneId)
             .subscribe(function (scene) { return _this.scene = scene; }, function (error) { return _this.errorMessage = error; });
-        this.popToast();
     };
     return SceneComponent;
 }());

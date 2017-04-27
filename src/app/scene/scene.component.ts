@@ -50,7 +50,6 @@ export class SceneComponent implements OnInit{
                        scene => this.scene = scene,
                        error =>  this.errorMessage = <any>error
                      );
-                     this.popToast();
 	}
 
 }
