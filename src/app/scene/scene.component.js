@@ -10,30 +10,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var scene_service_1 = require("./scene.service");
-var SceneComponent = (function () {
-    function SceneComponent(sceneService) {
+var angular2_toaster_1 = require("angular2-toaster");
+var SceneComponent = SceneComponent_1 = (function () {
+    function SceneComponent(sceneService, toasterService) {
         this.sceneService = sceneService;
         this.sceneId = '1';
         this.choix = '';
+        this.toasterconfig = new angular2_toaster_1.ToasterConfig({
+            showCloseButton: false,
+            tapToDismiss: false,
+            timeout: 0
+        });
+        this.toasterService = toasterService;
     }
     SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
-    SceneComponent.prototype.nextScene = function () {
+    SceneComponent.prototype.ngAfterViewInit = function () { this.popToast(); };
+    SceneComponent.prototype.nextScene = function (choix) {
         this.getScenesById(choix);
+    };
+    SceneComponent.prototype.popToast = function () {
+        this.toasterService.pop('success', 'Emilie', 'this.scene.acf.description_1');
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
         this.sceneService.getScenesById(sceneId)
             .subscribe(function (scene) { return _this.scene = scene; }, function (error) { return _this.errorMessage = error; });
+        this.popToast();
     };
     return SceneComponent;
 }());
-SceneComponent = __decorate([
+SceneComponent = SceneComponent_1 = __decorate([
+    core_1.NgModule({
+        imports: [angular2_toaster_1.ToasterModule],
+        declarations: [SceneComponent_1],
+        providers: [],
+        bootstrap: [SceneComponent_1]
+    }),
     core_1.Component({
         selector: 'scene-page',
         templateUrl: './scene.template.html',
         providers: [scene_service_1.SceneService]
     }),
-    __metadata("design:paramtypes", [scene_service_1.SceneService])
+    __metadata("design:paramtypes", [scene_service_1.SceneService, angular2_toaster_1.ToasterService])
 ], SceneComponent);
 exports.SceneComponent = SceneComponent;
+var SceneComponent_1;
 //# sourceMappingURL=scene.component.js.map

@@ -13,6 +13,7 @@ var email_component_1 = require("./email/email.component");
 var scene_component_1 = require("./scene/scene.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var angular2_toaster_1 = require("angular2-toaster");
 var app_routing_1 = require("./app.routing");
 var AppModule = (function () {
     function AppModule() {
@@ -21,7 +22,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, ng_bootstrap_1.NgbModule.forRoot(), app_routing_1.appRouting, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule, http_1.JsonpModule],
+        imports: [platform_browser_1.BrowserModule, ng_bootstrap_1.NgbModule.forRoot(), app_routing_1.appRouting, forms_1.FormsModule, forms_1.ReactiveFormsModule, http_1.HttpModule, http_1.JsonpModule, angular2_toaster_1.ToasterModule],
         declarations: [app_component_1.AppComponent, email_component_1.EmailComponent, scene_component_1.SceneComponent],
         bootstrap: [app_component_1.AppComponent]
     })
