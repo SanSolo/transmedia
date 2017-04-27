@@ -11,20 +11,17 @@ import { SceneService } from './scene.service';
 export class SceneComponent implements OnInit{
 	errorMessage: string;
 	scenes: Scene[];
-	mode = 'Observable';
 	sceneId = '1';
 	scene: Scene;
+	choix: string = '';
 
 	constructor (private sceneService: SceneService) {}
 
 	ngOnInit() { this.getScenesById('1'); }
 
-	getScenes() {
-    this.sceneService.getScenes()
-                   	 .subscribe(
-                       scenes => this.scenes = scenes,
-                       error =>  this.errorMessage = <any>error
-                     );
+	nextScene(){
+		this.getScenesById(choix);
+
 	}
 	
 	getScenesById(sceneId: string){
@@ -32,9 +29,9 @@ export class SceneComponent implements OnInit{
                    	 .subscribe(
                        scene => this.scene = scene,
                        error =>  this.errorMessage = <any>error
-                     );
-		
+                     );		
 	}
+
 }
 
 

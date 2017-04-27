@@ -1,29 +1,32 @@
 <div class="scene-img" *ngIf="scene" [ngStyle]="{'background-image':'url(' + scene._embedded['wp:featuredmedia']['0']['source_url'] +')'}"></div>
 <div class="scene-txt"></div>
 <div class="scene-plot-container">
-	<div class="scene-plot" *ngIf="scene"><!--scene._embedded.wp:featuredmedia.0.source-->
+	<div class="scene-plot" *ngIf="scene">
 		<p>{{scene.content.rendered}}</p>
-		<form action="">
+		<form action="" (ngSubmit)="nextScene()">
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
-					<input id="radio1" name="radio" type="radio" class="custom-control-input">
+					<input id="radio1" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_1.ID">
 					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Premier choix, il arrive ceci</span>
+					<span class="custom-control-description">{{scene.acf.description_1}}</span>
 				</label>
 			</div>
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
-					<input id="radio2" name="radio" type="radio" class="custom-control-input">
+					<input id="radio2" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_2.ID">
 					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Deuxième choix, il arrive cela</span>
+					<span class="custom-control-description">{{scene.acf.description_2}}</span>
 				</label>
 			</div>
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
-					<input id="radio2" name="radio" type="radio" class="custom-control-input">
+					<input id="radio3" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_3.ID">
 					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Troisième choix, la réponse D</span>
+					<span class="custom-control-description">{{scene.acf.description_3}}</span>
 				</label>
+			</div>
+			<div class="form-group row">
+				<button type="submit" class="btn btn-success">Submit</button>
 			</div>
 		</form>
 	</div>

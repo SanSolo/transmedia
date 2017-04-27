@@ -13,14 +13,12 @@ var scene_service_1 = require("./scene.service");
 var SceneComponent = (function () {
     function SceneComponent(sceneService) {
         this.sceneService = sceneService;
-        this.mode = 'Observable';
         this.sceneId = '1';
+        this.choix = '';
     }
     SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
-    SceneComponent.prototype.getScenes = function () {
-        var _this = this;
-        this.sceneService.getScenes()
-            .subscribe(function (scenes) { return _this.scenes = scenes; }, function (error) { return _this.errorMessage = error; });
+    SceneComponent.prototype.nextScene = function () {
+        this.getScenesById(choix);
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
