@@ -66,7 +66,7 @@ private handleError (error: Response | any) {
        headers.append("Authorization", "Basic " + btoa('prout' + ":" + this.apiKey));
        headers.append("Content-Type", "application/json");
        let options       = new RequestOptions({ headers: headers }); // Create a request option
-       return this.http.post('https://us15.api.mailchimp.com/3.0/lists/eb7b58de02/members', data, options)
+       return this.http.post('/mailchimp', data, options)
                     .map(this.extractData)
                     .catch(this.handleError);
    }
