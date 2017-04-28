@@ -14,6 +14,7 @@ var angular2_toaster_1 = require("angular2-toaster");
 var SceneComponent = SceneComponent_1 = (function () {
     function SceneComponent(sceneService, toasterService) {
         this.sceneService = sceneService;
+        this.scenes = [];
         this.sceneId = '1';
         this.choix = '';
         this.toasterconfig = new angular2_toaster_1.ToasterConfig({

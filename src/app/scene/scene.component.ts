@@ -18,9 +18,9 @@ import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
 
 export class SceneComponent implements OnInit{
 	errorMessage: string;
-	scenes: Scene[];
+	private scenes: Array<Scene> = [];
 	sceneId = '1';
-	scene: Scene;
+	private scene: Scene;
 	choix: string = '';
 	private toasterService: ToasterService;
 
@@ -50,6 +50,7 @@ export class SceneComponent implements OnInit{
                        scene => this.scene = scene,
                        error =>  this.errorMessage = <any>error
                      );
+
 	}
 
 }
