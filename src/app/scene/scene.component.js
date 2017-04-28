@@ -27,6 +27,7 @@ var SceneComponent = SceneComponent_1 = (function () {
     SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
     SceneComponent.prototype.ngAfterViewInit = function () { this.popToast(); };
     SceneComponent.prototype.nextScene = function (choix) {
+        window.scrollTo(0, 0);
         this.getScenesById(choix);
     };
     SceneComponent.prototype.popToast = function () {

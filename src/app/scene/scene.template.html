@@ -3,31 +3,38 @@
 <div class="scene-plot-container">
 	<div class="scene-plot" *ngIf="scene">
 		<p>{{scene.content.rendered}}</p>
-		<form action="" (ngSubmit)="nextScene()">
-			<div class="form-group row">
+
+
+		<form action="" (ngSubmit)="nextScene(choix)">
+
+			<div class="form-group row" *ngIf="(scene.acf.description_1 | json) != '{}'">
 				<label class="custom-control custom-radio">
-					<input id="radio1" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_1.ID">
+					<input id="radio1" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_1.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">{{scenes[0].acf.description_1}}</span>
+					<span class="custom-control-description">{{scene.acf.description_1}}</span>
 				</label>
 			</div>
+
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
-					<input id="radio2" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_2.ID">
+					<input id="radio2" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_2.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">{{scenes[0].acf.description_2}}</span>
+					<span class="custom-control-description">{{scene.acf.description_2}}</span>
 				</label>
 			</div>
+
 			<div class="form-group row">
 				<label class="custom-control custom-radio">
-					<input id="radio3" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_3.ID">
+					<input id="radio3" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_3.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
 					<span class="custom-control-description">{{scene.acf.description_3}}</span>
 				</label>
 			</div>
+
 			<div class="form-group row">
 				<button type="submit" class="btn btn-success">Submit</button>
 			</div>
+
 		</form>
 	</div>
 	<toaster-container [toasterconfig]="toasterconfig"></toaster-container>

@@ -8,7 +8,8 @@ import { Scene } from './scene';
 @Injectable()
 
 export class SceneService {
-  private scenesUrl = 'http://daro.kietumedia.ch/wp-json/wp/v2/posts';  // URL to web API
+  private mainUrl = 'http://daro.kietumedia.ch/wp-json/wp/v2/posts';  // URL to web API
+  private scenesUrl = '';
   constructor (private http: Http) {}
 
   getScenes(): Observable<Scene[]> {
@@ -18,7 +19,8 @@ export class SceneService {
   }
 
   getScenesById(sceneId: string): Observable<Scene>{
-    this.scenesUrl += '/' + sceneId + '?_embed';
+    this.scenesUrl = '';
+    this.scenesUrl = this.mainUrl + '/' + sceneId + '?_embed';
     return this.http.get(this.scenesUrl)
                     .map(this.extractData)
                     .catch(this.handleError);

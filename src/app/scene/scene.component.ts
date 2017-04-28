@@ -33,13 +33,16 @@ export class SceneComponent implements OnInit{
             tapToDismiss: false,
             timeout: 0
     });
+
 	ngOnInit() { this.getScenesById('1'); }
+
 	ngAfterViewInit() {this.popToast();}
 
 	nextScene(choix: string){
+		window.scrollTo(0,0);
 		this.getScenesById(choix);
-
 	}
+
 	popToast() {
         this.toasterService.pop('success','Emilie', 'this.scene.acf.description_1');
     }
