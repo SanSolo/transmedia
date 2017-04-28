@@ -9,6 +9,7 @@ var apiProxy = proxy('/mailchimp', {
 
 module.exports = {
     server: {
+        port: "3015"
         baseDir: "src",
         routes: {
           "/node_modules": "node_modules"
