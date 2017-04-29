@@ -16,27 +16,30 @@ var SceneComponent = SceneComponent_1 = (function () {
         this.sceneService = sceneService;
         this.scenes = [];
         this.sceneId = '1';
+        this.scene = null;
         this.choix = '';
         this.toasterconfig = new angular2_toaster_1.ToasterConfig({
             showCloseButton: false,
             tapToDismiss: false,
-            timeout: 0
+            timeout: 15000
         });
         this.toasterService = toasterService;
     }
     SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
-    SceneComponent.prototype.ngAfterViewInit = function () { this.popToast(); };
+    //ngAfterViewInit() {this.popToast();}
     SceneComponent.prototype.nextScene = function (choix) {
         window.scrollTo(0, 0);
         this.getScenesById(choix);
     };
-    SceneComponent.prototype.popToast = function () {
-        this.toasterService.pop('success', 'Emilie', 'this.scene.acf.description_1');
+    SceneComponent.prototype.popToast = function (scene) {
+        this.toasterService.clear();
+        this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
+        this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
         this.sceneService.getScenesById(sceneId)
-            .subscribe(function (scene) { return _this.scene = scene; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (value) { return _this.scene = value; }, function (error) { return _this.errorMessage = error; }, function () { return _this.popToast(_this.scene); });
     };
     return SceneComponent;
 }());

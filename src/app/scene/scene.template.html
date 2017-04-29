@@ -2,6 +2,8 @@
 <div class="scene-txt"></div>
 <div class="scene-plot-container">
 	<div class="scene-plot" *ngIf="scene">
+		<button (click)="popToast()" class="btn btn-primary">Réafficher la conversation</button>
+		<br />
 		<p>{{scene.content.rendered}}</p>
 
 
@@ -38,5 +40,4 @@
 		</form>
 	</div>
 	<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
-            <button (click)="popToast()">pop toast</button>`
 </div>

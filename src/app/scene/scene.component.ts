@@ -20,7 +20,7 @@ export class SceneComponent implements OnInit{
 	errorMessage: string;
 	private scenes: Array<Scene> = [];
 	sceneId = '1';
-	private scene: Scene;
+	private scene: Object = null;
 	choix: string = '';
 	private toasterService: ToasterService;
 
@@ -31,28 +31,32 @@ export class SceneComponent implements OnInit{
         new ToasterConfig({
             showCloseButton: false,
             tapToDismiss: false,
-            timeout: 0
+            timeout: 15000
     });
 
 	ngOnInit() { this.getScenesById('1'); }
 
-	ngAfterViewInit() {this.popToast();}
+	//ngAfterViewInit() {this.popToast();}
 
 	nextScene(choix: string){
 		window.scrollTo(0,0);
 		this.getScenesById(choix);
 	}
 
-	popToast() {
-        this.toasterService.pop('success','Emilie', 'this.scene.acf.description_1');
+	popToast(scene: Object) {
+        this.toasterService.clear();
+        this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
+        this.toasterService.pop('success','Emilie', this.scene.acf.comem);
     }
 
 	getScenesById(sceneId: string){
 		this.sceneService.getScenesById(sceneId)
                    	 .subscribe(
-                       scene => this.scene = scene,
-                       error =>  this.errorMessage = <any>error
+                       value => this.scene = value,
+                       error =>  this.errorMessage = <any>error,
+                       () => this.popToast(this.scene)
                      );
+
 
 	}
 
