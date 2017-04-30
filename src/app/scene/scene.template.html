@@ -9,7 +9,7 @@
 
 		<form action="" (ngSubmit)="nextScene(choix)">
 
-			<div class="form-group row" *ngIf="(scene.acf.description_1 | json) != '{}'">
+			<div class="form-group row" *ngIf="scene.acf.description_1">
 				<label class="custom-control custom-radio">
 					<input id="radio1" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_1.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
@@ -17,7 +17,7 @@
 				</label>
 			</div>
 
-			<div class="form-group row">
+			<div class="form-group row" *ngIf="scene.acf.description_2">
 				<label class="custom-control custom-radio">
 					<input id="radio2" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_2.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
@@ -25,7 +25,7 @@
 				</label>
 			</div>
 
-			<div class="form-group row">
+			<div class="form-group row" *ngIf="scene.acf.description_3">
 				<label class="custom-control custom-radio">
 					<input id="radio3" name="choix" type="radio" class="custom-control-input" [value]="scene.acf.suivante_3.ID" [(ngModel)]="choix">
 					<span class="custom-control-indicator"></span>
@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="form-group row">
-				<button type="submit" class="btn btn-success">Submit</button>
+				<button type="submit" class="btn btn-success">Suivant</button>
 			</div>
 
 		</form>
