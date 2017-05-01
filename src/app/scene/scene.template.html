@@ -37,6 +37,15 @@
 			</div>
 
 		</form>
+		<div class="progress cash">
+			Ventes: <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{'width': cashBar + '%'}" aria-valuemin="0"></div>
+		</div>
+		<div class="progress prod">
+			Volume: <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" [ngStyle]="{'width': prodBar + '%'}" aria-valuemin="0"></div>
+		</div>
+		<div class="progress pop">
+			Popularité: <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" [ngStyle]="{'width': popBar + '%'}" aria-valuemin="0"></div>
+		</div>
 	</div>
 	<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
 </div>

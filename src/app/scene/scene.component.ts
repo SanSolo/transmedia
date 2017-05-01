@@ -33,6 +33,9 @@ export class SceneComponent implements OnInit{
 	errorMessage: string;
 	private scenes: Array<Scene> = [];
 	sceneId = '1';
+  cashBar = 0;
+  prodBar = 0;
+  popBar = 0;
 	private scene: any;
 	choix: string = '';
 	private toasterService: ToasterService;
@@ -60,6 +63,9 @@ export class SceneComponent implements OnInit{
         this.toasterService.clear();
         this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
         this.toasterService.pop('success','Emilie', this.scene.acf.comem);
+        this.cashBar =+ this.scene.acf.cashbar;
+        this.prodBar =+ this.scene.acf.prodbar;
+        this.popBar =+ this.scene.acf.popbar;
     }
 
 	getScenesById(sceneId: string){
