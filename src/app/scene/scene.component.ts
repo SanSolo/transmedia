@@ -33,7 +33,7 @@ export class SceneComponent implements OnInit{
 	errorMessage: string;
 	private scenes: Array<Scene> = [];
 	sceneId = '1';
-	private scene: Object = null;
+	private scene: any;
 	choix: string = '';
 	private toasterService: ToasterService;
 

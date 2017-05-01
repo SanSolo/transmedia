@@ -16,7 +16,6 @@ var SceneComponent = SceneComponent_1 = (function () {
         this.sceneService = sceneService;
         this.scenes = [];
         this.sceneId = '1';
-        this.scene = null;
         this.choix = '';
         this.toasterconfig = new angular2_toaster_1.ToasterConfig({
             showCloseButton: false,
@@ -33,8 +32,8 @@ var SceneComponent = SceneComponent_1 = (function () {
     };
     SceneComponent.prototype.popToast = function (scene) {
         this.toasterService.clear();
-        //this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
-        //this.toasterService.pop('success','Emilie', this.scene.acf.comem);
+        this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
+        this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
