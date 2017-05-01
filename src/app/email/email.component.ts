@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Email } from './model/email';
 import { EmailService } from './email.service';
@@ -16,7 +17,7 @@ export class EmailComponent {
   private errorMessage ='';
   private results: Email[];
   model = new Email('','','');
-  constructor(fb: FormBuilder, private myService:EmailService){
+  constructor(fb: FormBuilder, private myService:EmailService, private router: Router){
     this.complexForm = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.pattern(this.emailRegex)])],
       'nom': [null, Validators.compose([Validators.required,Validators.minLength(3)])],
@@ -41,6 +42,12 @@ export class EmailComponent {
    this.myService.registerEmail(adresse, prenom, nom)
                     .subscribe(
                       test  => this.results = test,
-                      error =>  this.errorMessage = <any>error);
+                      error =>  this.errorMessage = <any>error,
+                      () => this.goToScene())
+ }
+
+ goToScene(){
+   console.log('goToScene');
+   this.router.navigate(["/scene"]);
  }
 }
