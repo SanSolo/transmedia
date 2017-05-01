@@ -1,4 +1,4 @@
-import { NgModule, Component, OnInit, AfterViewInit } from '@angular/core';
+import { NgModule, Component, OnInit, AfterViewInit, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { Scene } from './scene';
 import { SceneService } from './scene.service';
 import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
@@ -13,7 +13,20 @@ import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
 @Component ({
 	selector:'scene-page',
 	templateUrl: './scene.template.html',
-	providers: [ SceneService]
+	providers: [ SceneService]/*,
+	animations: [
+        trigger('hideScene', [
+            state('inactive', style({
+                display: 'none'
+            })),
+            state('active', style({
+                display: 'block'
+            })),
+            transition('inactive => active', animate('100ms ease-in')),
+            transition('active => inactive', animate('100ms ease-out'))
+        ]),
+
+    ]*/
 })
 
 export class SceneComponent implements OnInit{
@@ -59,6 +72,10 @@ export class SceneComponent implements OnInit{
 
 
 	}
+
+	toggleScene() {
+       // this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+    }
 
 
 }

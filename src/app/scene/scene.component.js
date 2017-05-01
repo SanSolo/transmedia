@@ -33,13 +33,16 @@ var SceneComponent = SceneComponent_1 = (function () {
     };
     SceneComponent.prototype.popToast = function (scene) {
         this.toasterService.clear();
-        this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
-        this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
+        //this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
+        //this.toasterService.pop('success','Emilie', this.scene.acf.comem);
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
         this.sceneService.getScenesById(sceneId)
             .subscribe(function (value) { return _this.scene = value; }, function (error) { return _this.errorMessage = error; }, function () { return _this.popToast(_this.scene); });
+    };
+    SceneComponent.prototype.toggleScene = function () {
+        // this.state = (this.state === 'inactive' ? 'active' : 'inactive');
     };
     return SceneComponent;
 }());
@@ -53,7 +56,20 @@ SceneComponent = SceneComponent_1 = __decorate([
     core_1.Component({
         selector: 'scene-page',
         templateUrl: './scene.template.html',
-        providers: [scene_service_1.SceneService]
+        providers: [scene_service_1.SceneService] /*,
+        animations: [
+            trigger('hideScene', [
+                state('inactive', style({
+                    display: 'none'
+                })),
+                state('active', style({
+                    display: 'block'
+                })),
+                transition('inactive => active', animate('100ms ease-in')),
+                transition('active => inactive', animate('100ms ease-out'))
+            ]),
+    
+        ]*/
     }),
     __metadata("design:paramtypes", [scene_service_1.SceneService, angular2_toaster_1.ToasterService])
 ], SceneComponent);

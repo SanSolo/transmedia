@@ -1,5 +1,4 @@
 <div class="scene-img" *ngIf="scene" [ngStyle]="{'background-image':'url(' + scene._embedded['wp:featuredmedia']['0']['source_url'] +')'}"></div>
-<div class="scene-txt"></div>
 <div class="scene-plot-container">
 	<div class="scene-plot" *ngIf="scene">
 		<button (click)="popToast()" class="btn btn-primary">Réafficher la conversation</button>
@@ -34,7 +33,7 @@
 			</div>
 
 			<div class="form-group row">
-				<button type="submit" class="btn btn-success">Suivant</button>
+				<button type="submit" class="btn btn-success" (click)="toggleScene()">Suivant</button>
 			</div>
 
 		</form>
