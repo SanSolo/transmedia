@@ -1,7 +1,38 @@
 <div class="scene-img" *ngIf="scene" [ngStyle]="{'background-image':'url(' + scene._embedded['wp:featuredmedia']['0']['source_url'] +')'}"></div>
 <div class="scene-plot-container">
 	<div class="scene-plot" *ngIf="scene">
-		<button (click)="popToast()" class="btn btn-primary">Réafficher la conversation</button>
+		<div class="container">
+		<div class="row align-items-start">
+			<div class="col-sm-4 offset-sm-4 text-center">
+				<img class="img-fluid" width="80" src="./img/down-chevron.gif" />
+			</div>
+		</div>
+	</div>
+		<div class="container">
+		<div class="row align-items-start">
+			<div class="col-sm-6 offset-sm-6 text-right">
+				<button (click)="popToast()" type="button" class="btn btn-outline-primary">Revoir la conversation</button>
+			</div>
+		</div>
+	</div>
+		<br />
+		<div class="row align-items-center">
+			<div class="col-sm-4 text-center">
+				<img class="img-fluid" width="40" src="../img/like.png" />
+				<h5>{{popBar}}</h5>
+				<p>Fans</p>
+			</div>
+			<div class="col-sm-4 text-center">
+				<img class="img-fluid" width="40" src="../img/cash.png" />
+				<h5>{{cashBar}} CHF</h5>
+				<p>Chiffre d'affaires</p>
+			</div>
+			<div class="col-sm-4 text-center">
+				<img class="img-fluid" width="40" src="../img/budget.png" />
+				<h5>{{prodBar}}</h5>
+				<p>Coûts de productions CHF</p>
+			</div>
+		</div>
 		<br />
 		<p>{{scene.content.rendered}}</p>
 
@@ -37,15 +68,7 @@
 			</div>
 
 		</form>
-		<div class="progress cash">
-			Ventes: <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{'width': cashBar + '%'}" aria-valuemin="0"></div>
-		</div>
-		<div class="progress prod">
-			Volume: <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" [ngStyle]="{'width': prodBar + '%'}" aria-valuemin="0"></div>
-		</div>
-		<div class="progress pop">
-			Popularité: <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" [ngStyle]="{'width': popBar + '%'}" aria-valuemin="0"></div>
-		</div>
 	</div>
 	<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+	<br />
 </div>

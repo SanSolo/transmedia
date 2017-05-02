@@ -32,19 +32,19 @@ var SceneComponent = SceneComponent_1 = (function () {
         window.scrollTo(0, 0);
         this.getScenesById(choix);
         if (this.reponseId === 'radio1') {
-            this.cashBar += this.scene.acf.cash_1;
-            this.prodBar += this.scene.acf.production_1;
-            this.popBar += this.scene.acf.popularite_1;
+            this.cashBar += parseInt(this.scene.acf.cash_1);
+            this.prodBar += parseInt(this.scene.acf.production_1);
+            this.popBar += parseInt(this.scene.acf.popularite_1);
         }
         if (this.reponseId === 'radio2') {
-            this.cashBar += this.scene.acf.cash_2;
-            this.prodBar += this.scene.acf.production_2;
-            this.popBar += this.scene.acf.popularite_2;
+            this.cashBar += parseInt(this.scene.acf.cash_2);
+            this.prodBar += parseInt(this.scene.acf.production_2);
+            this.popBar += parseInt(this.scene.acf.popularite_2);
         }
         if (this.reponseId === 'radio3') {
-            this.cashBar += this.scene.acf.cash_3;
-            this.prodBar += this.scene.acf.production_3;
-            this.popBar += this.scene.acf.popularite_3;
+            this.cashBar += parseInt(this.scene.acf.cash_3);
+            this.prodBar += parseInt(this.scene.acf.production_3);
+            this.popBar += parseInt(this.scene.acf.popularite_3);
         }
         console.log('Cashbar ' + this.cashBar);
         console.log('Prodbar ' + this.prodBar);
