@@ -28,15 +28,21 @@ var SceneComponent = SceneComponent_1 = (function () {
         this.toasterService = toasterService;
     }
     SceneComponent.prototype.ngOnInit = function () { this.getScenesById('1'); };
-    //ngAfterViewInit() {this.popToast();}
     SceneComponent.prototype.nextScene = function (choix) {
         window.scrollTo(0, 0);
         this.getScenesById(choix);
     };
     SceneComponent.prototype.popToast = function (scene) {
         this.toasterService.clear();
-        this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
-        this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
+        console.log(this.scene.acf.parle);
+        if (this.scene.acf.parle === 'Comem') {
+            this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
+            this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
+        }
+        else {
+            this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
+            this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
+        }
         this.cashBar = +this.scene.acf.cashbar;
         this.prodBar = +this.scene.acf.prodbar;
         this.popBar = +this.scene.acf.popbar;

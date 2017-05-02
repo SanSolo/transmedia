@@ -32,10 +32,10 @@ import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
 export class SceneComponent implements OnInit{
 	errorMessage: string;
 	private scenes: Array<Scene> = [];
-	sceneId = '1';
-  cashBar = 0;
-  prodBar = 0;
-  popBar = 0;
+	private sceneId: string = '1';
+  private cashBar: number = 0;
+  private prodBar: number = 0;
+  private popBar: number = 0;
 	private scene: any;
 	choix: string = '';
 	private toasterService: ToasterService;
@@ -52,7 +52,6 @@ export class SceneComponent implements OnInit{
 
 	ngOnInit() { this.getScenesById('1'); }
 
-	//ngAfterViewInit() {this.popToast();}
 
 	nextScene(choix: string){
 		window.scrollTo(0,0);
@@ -61,8 +60,15 @@ export class SceneComponent implements OnInit{
 
 	popToast(scene: Object) {
         this.toasterService.clear();
-        this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
-        this.toasterService.pop('success','Emilie', this.scene.acf.comem);
+        console.log(this.scene.acf.parle);
+        if (this.scene.acf.parle === 'Comem'){
+          this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
+          this.toasterService.pop('success','Emilie', this.scene.acf.comem);
+        }
+        else {
+          this.toasterService.pop('success','Emilie', this.scene.acf.comem);
+          this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
+        }
         this.cashBar =+ this.scene.acf.cashbar;
         this.prodBar =+ this.scene.acf.prodbar;
         this.popBar =+ this.scene.acf.popbar;
