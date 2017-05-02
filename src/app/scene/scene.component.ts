@@ -31,6 +31,7 @@ import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
 
 export class SceneComponent implements OnInit{
 	errorMessage: string;
+  private reponseId: string;
 	private scenes: Array<Scene> = [];
 	private sceneId: string = '1';
   private cashBar: number = 0;
@@ -56,6 +57,24 @@ export class SceneComponent implements OnInit{
 	nextScene(choix: string){
 		window.scrollTo(0,0);
 		this.getScenesById(choix);
+    if(this.reponseId === 'radio1'){
+      this.cashBar += this.scene.acf.cash_1;
+      this.prodBar += this.scene.acf.production_1;
+      this.popBar += this.scene.acf.popularite_1;
+    }
+    if(this.reponseId === 'radio2'){
+      this.cashBar += this.scene.acf.cash_2;
+      this.prodBar += this.scene.acf.production_2;
+      this.popBar += this.scene.acf.popularite_2;
+    }
+    if(this.reponseId === 'radio3'){
+      this.cashBar += this.scene.acf.cash_3;
+      this.prodBar += this.scene.acf.production_3;
+      this.popBar += this.scene.acf.popularite_3;
+    }
+    console.log('Cashbar '+ this.cashBar);
+    console.log('Prodbar '+ this.prodBar);
+    console.log('Popbar '+ this.popBar);
 	}
 
 	popToast(scene: Object) {
@@ -69,9 +88,6 @@ export class SceneComponent implements OnInit{
           this.toasterService.pop('success','Emilie', this.scene.acf.comem);
           this.toasterService.pop('warning','Denis', this.scene.acf.eracom);
         }
-        this.cashBar =+ this.scene.acf.cashbar;
-        this.prodBar =+ this.scene.acf.prodbar;
-        this.popBar =+ this.scene.acf.popbar;
     }
 
 	getScenesById(sceneId: string){
@@ -84,6 +100,14 @@ export class SceneComponent implements OnInit{
 
 
 	}
+
+  getId(event: any){
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    console.log(value);
+    this.reponseId = value;
+  }
 
 	toggleScene() {
        // this.state = (this.state === 'inactive' ? 'active' : 'inactive');

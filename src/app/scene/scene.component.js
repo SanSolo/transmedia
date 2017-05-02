@@ -31,6 +31,24 @@ var SceneComponent = SceneComponent_1 = (function () {
     SceneComponent.prototype.nextScene = function (choix) {
         window.scrollTo(0, 0);
         this.getScenesById(choix);
+        if (this.reponseId === 'radio1') {
+            this.cashBar += this.scene.acf.cash_1;
+            this.prodBar += this.scene.acf.production_1;
+            this.popBar += this.scene.acf.popularite_1;
+        }
+        if (this.reponseId === 'radio2') {
+            this.cashBar += this.scene.acf.cash_2;
+            this.prodBar += this.scene.acf.production_2;
+            this.popBar += this.scene.acf.popularite_2;
+        }
+        if (this.reponseId === 'radio3') {
+            this.cashBar += this.scene.acf.cash_3;
+            this.prodBar += this.scene.acf.production_3;
+            this.popBar += this.scene.acf.popularite_3;
+        }
+        console.log('Cashbar ' + this.cashBar);
+        console.log('Prodbar ' + this.prodBar);
+        console.log('Popbar ' + this.popBar);
     };
     SceneComponent.prototype.popToast = function (scene) {
         this.toasterService.clear();
@@ -43,14 +61,18 @@ var SceneComponent = SceneComponent_1 = (function () {
             this.toasterService.pop('success', 'Emilie', this.scene.acf.comem);
             this.toasterService.pop('warning', 'Denis', this.scene.acf.eracom);
         }
-        this.cashBar = +this.scene.acf.cashbar;
-        this.prodBar = +this.scene.acf.prodbar;
-        this.popBar = +this.scene.acf.popbar;
     };
     SceneComponent.prototype.getScenesById = function (sceneId) {
         var _this = this;
         this.sceneService.getScenesById(sceneId)
             .subscribe(function (value) { return _this.scene = value; }, function (error) { return _this.errorMessage = error; }, function () { return _this.popToast(_this.scene); });
+    };
+    SceneComponent.prototype.getId = function (event) {
+        var target = event.target || event.srcElement || event.currentTarget;
+        var idAttr = target.attributes.id;
+        var value = idAttr.nodeValue;
+        console.log(value);
+        this.reponseId = value;
     };
     SceneComponent.prototype.toggleScene = function () {
         // this.state = (this.state === 'inactive' ? 'active' : 'inactive');
