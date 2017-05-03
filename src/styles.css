@@ -209,13 +209,14 @@ display: inline-block;; }};
   left: 0;
   background: url('') no-repeat fixed center center;
   background-size: cover;
+  background-attachment: scroll;
   z-index: 1;
 }
 
 .scene-plot-container{
    position: absolute;
    top: 90%;
-   z-index: 10;"
+   z-index: 10;
 }
 
 .scene-plot{
