@@ -207,9 +207,8 @@ display: inline-block;; }};
   height: 100%;
   top: 0;
   left: 0;
-  background: url('') no-repeat fixed center center;
+  background: url('') no-repeat scroll center center;
   background-size: cover;
-  background-attachment: scroll;
   z-index: 1;
 }
 
