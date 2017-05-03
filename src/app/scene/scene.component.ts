@@ -1,4 +1,5 @@
 import { NgModule, Component, OnInit, AfterViewInit, trigger, state, style, transition, animate, keyframes } from '@angular/core';
+import { Router } from "@angular/router";
 import { Scene } from './scene';
 import { SceneService } from './scene.service';
 import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
@@ -41,7 +42,7 @@ export class SceneComponent implements OnInit{
 	choix: string = '';
 	private toasterService: ToasterService;
 
-	constructor (private sceneService: SceneService, toasterService: ToasterService) {
+	constructor (private sceneService: SceneService, toasterService: ToasterService, private router: Router) {
 		this.toasterService = toasterService;
 	}
 	public toasterconfig : ToasterConfig =
@@ -107,6 +108,10 @@ export class SceneComponent implements OnInit{
     var value = idAttr.nodeValue;
     console.log(value);
     this.reponseId = value;
+  }
+
+  goToStart(){
+    this.router.navigate(["/mail"]);
   }
 
 	toggleScene() {

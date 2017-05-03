@@ -34,10 +34,15 @@
 			</div>
 		</div>
 		<br />
+		<h1 *ngIf="scene.acf.scene_final == true">{{scene.title.rendered}}</h1>
 		<p>{{scene.content.rendered}}</p>
+		<div class="row">
+			<div class="col-sm-6">
+				<button *ngIf="scene.acf.scene_final == true" class="btn btn-success" (click)="goToStart()" >Terminer</button>
+			</div>
+		</div>
 
-
-		<form action="" (ngSubmit)="nextScene(choix)">
+		<form *ngIf="scene.acf.scene_final != true" action="" (ngSubmit)="nextScene(choix)">
 
 			<div class="form-group row" *ngIf="scene.acf.description_1">
 				<label class="custom-control custom-radio">

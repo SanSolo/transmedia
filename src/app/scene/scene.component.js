@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var scene_service_1 = require("./scene.service");
 var angular2_toaster_1 = require("angular2-toaster");
 var SceneComponent = SceneComponent_1 = (function () {
-    function SceneComponent(sceneService, toasterService) {
+    function SceneComponent(sceneService, toasterService, router) {
         this.sceneService = sceneService;
+        this.router = router;
         this.scenes = [];
         this.sceneId = '1';
         this.cashBar = 0;
@@ -74,6 +76,9 @@ var SceneComponent = SceneComponent_1 = (function () {
         console.log(value);
         this.reponseId = value;
     };
+    SceneComponent.prototype.goToStart = function () {
+        this.router.navigate(["/mail"]);
+    };
     SceneComponent.prototype.toggleScene = function () {
         // this.state = (this.state === 'inactive' ? 'active' : 'inactive');
     };
@@ -104,7 +109,7 @@ SceneComponent = SceneComponent_1 = __decorate([
     
         ]*/
     }),
-    __metadata("design:paramtypes", [scene_service_1.SceneService, angular2_toaster_1.ToasterService])
+    __metadata("design:paramtypes", [scene_service_1.SceneService, angular2_toaster_1.ToasterService, router_1.Router])
 ], SceneComponent);
 exports.SceneComponent = SceneComponent;
 var SceneComponent_1;
