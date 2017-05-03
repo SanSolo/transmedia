@@ -40,15 +40,18 @@ private extractData(res: Response) {
 private handleError (error: Response | any) {
   // In a real world app, you might use a remote logging infrastructure
   let errMsg: string;
+  let err;
+  let body;
   if (error instanceof Response) {
-    const body = error.json() || '';
-    const err = body.error || JSON.stringify(body);
+    body = error.json() || '';
+    //err = body.error || JSON.stringify(body);
     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
   } else {
     errMsg = error.message ? error.message : error.toString();
   }
-  console.error(errMsg);
-  return Observable.throw(errMsg);
+
+  console.error(JSON.stringify(body.title));
+  return Observable.throw(body.title);
 }
 
      registerEmail(adresse: string, nom: string, prenom: string): Observable<Email[]> {

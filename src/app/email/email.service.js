@@ -39,16 +39,18 @@ var EmailService = (function () {
     EmailService.prototype.handleError = function (error) {
         // In a real world app, you might use a remote logging infrastructure
         var errMsg;
+        var err;
+        var body;
         if (error instanceof http_1.Response) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
+            body = error.json() || '';
+            //err = body.error || JSON.stringify(body);
             errMsg = error.status + " - " + (error.statusText || '') + " " + err;
         }
         else {
             errMsg = error.message ? error.message : error.toString();
         }
-        console.error(errMsg);
-        return Rx_1.Observable.throw(errMsg);
+        console.error(JSON.stringify(body.title));
+        return Rx_1.Observable.throw(body.title);
     };
     EmailService.prototype.registerEmail = function (adresse, nom, prenom) {
         //let bodyString = JSON.stringify(body); // Stringify payload

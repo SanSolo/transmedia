@@ -29,6 +29,8 @@
        </div>
        <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="form-control-feedback">L'email est obligatoire</div>
        <div *ngIf="complexForm.controls['email'].hasError('pattern') && complexForm.controls['email'].touched" class="form-control-feedback">L'email est invalide. Ex: mail@exemple.com</div>
+       <div *ngIf="errorMessage == 'Member Exists'" class="form-control-feedback">L'email est déjà utilisé</div>
+       <div *ngIf="errorMessage != 'Member Exists' && errorMessage != ''" class="form-control-feedback">Une erreur est survenue avec l'API MailChimp</div>
       </form>
 	</div>
 </div>
