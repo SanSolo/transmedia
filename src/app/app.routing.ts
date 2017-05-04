@@ -4,7 +4,7 @@ import {EmailComponent } from './email/email.component';
 import {SceneComponent} from './scene/scene.component';
 import {AppComponent } from './app.component';
 const appRoutes: Routes = [
-  { path: '', component: AppComponent},
+  { path: '', component: EmailComponent},
   { path: 'mail', component: EmailComponent},
   { path: 'scene', component: SceneComponent},
   { path: 'mailchimp', redirectTo: ''}
