@@ -58,6 +58,7 @@ export class SceneComponent implements OnInit{
 	nextScene(choix: string){
 		window.scrollTo(0,0);
 		this.getScenesById(choix);
+    this.choix = '';
     if(this.reponseId === 'radio1'){
       this.cashBar += parseInt(this.scene.acf.cash_1);
       this.prodBar += parseInt(this.scene.acf.production_1);
